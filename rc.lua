@@ -23,6 +23,7 @@ local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup")
                       require("awful.hotkeys_popup.keys")
 local mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
+local dpi           = require("beautiful.xresources").apply_dpi
 
 -- }}}
 
@@ -174,7 +175,8 @@ awful.util.tasklist_buttons = mytable.join(
      awful.button({ }, 5, function() awful.client.focus.byidx(-1) end)
 )
 
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+-- beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+beautiful.init(string.format("%s/.config/awesome/themes/%s/theme-personal.lua", os.getenv("HOME"), chosen_theme))
 
 -- }}}
 
@@ -251,7 +253,10 @@ screen.connect_signal("arrange", function (s)
 end)
 
 -- Create a wibox for each screen and add it
-awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
+awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s)
+    s.systray = wibox.widget.systray()
+    s.systray.visible = true
+end)
 
 -- }}}
 
@@ -441,10 +446,10 @@ globalkeys = mytable.join(
               {description = "show weather", group = "widgets"}),
 
     -- Screen brightness
-    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end,
-              {description = "+10%", group = "hotkeys"}),
-    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
-              {description = "-10%", group = "hotkeys"}),
+    -- awful.key({ }, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end,
+    --           {description = "+10%", group = "hotkeys"}),
+    -- awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
+    --           {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
     awful.key({ altkey }, "Up",
@@ -549,6 +554,22 @@ globalkeys = mytable.join(
             os.execute("rofi -show drun")
         end,
         {description = "show rofi", group = "launcher"}),
+
+    awful.key({ modkey }, "F11", function ()
+            awful.util.spawn( "rofi -theme-str 'window {width: 100%;height: 100%;}' -show drun" )
+    end),
+
+
+ -- Show/Hide Systray
+    awful.key({ modkey }, "-", function ()
+    awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+    end, {description = "Toggle systray visibility", group = "awesome"}),
+
+ -- Show/Hide Systray
+    awful.key({ modkey }, "KP_Subtract", function ()
+    awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+    end, {description = "Toggle systray visibility", group = "awesome"}),
+
     -- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
