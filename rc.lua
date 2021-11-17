@@ -97,7 +97,8 @@ local themes = {
     "powerarrow-dark", -- 7
     "rainbow",         -- 8
     "steamburn",       -- 9
-    "vertex"           -- 10
+    "vertex",          -- 10
+    "Morning"          -- 11
 }
 
 local chosen_theme = themes[5]
@@ -256,9 +257,10 @@ screen.connect_signal("arrange", function (s)
 end)
 
 -- Create a wibox for each screen and add it
-awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s)
-    s.systray = wibox.widget.systray()
-    s.systray.visible = false
+awful.screen.connect_for_each_screen(function(s)
+        beautiful.at_screen_connect(s)
+        s.systray = wibox.widget.systray()
+        s.systray.visible = false
 end)
 
 -- }}}

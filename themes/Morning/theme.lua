@@ -36,5 +36,7 @@ theme.hotkeys_group_margin = 20
 
 -- Wallpaper
 theme.wallpaper = '~/.config/awesome/themes/Morning/wallpaper.jpg'
+function theme.at_screen_connect(s)
+end
 
 return theme
