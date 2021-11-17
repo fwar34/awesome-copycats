@@ -9,6 +9,7 @@ local gears = require("gears")
 local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
+local beautiful     = require("beautiful") -- Awesome theme module
 local dpi   = require("beautiful.xresources").apply_dpi
 
 local os = os
@@ -20,7 +21,7 @@ theme.wallpaper                                 = theme.confdir .. "/wall.png"
 -- theme.font                                      = "Terminus 8"
 -- theme.font                                      = "Noto Sans Regular 11"
 -- theme.taglist_font                              = "Noto Sans Regular 13"
-theme.font                                      = "JetBrains Mono 11"
+theme.font                                      = "JetBrains Mono 12"
 theme.taglist_font                              = "JetBrains Mono 13"
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
@@ -136,19 +137,17 @@ theme.cal = lain.widget.cal({
 })
 
 -- Weather
---[[ to be set before use
-local weathericon = wibox.widget.imagebox(theme.widget_weather)
-theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder (London)
-    notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
-    weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
-    settings = function()
-        descr = weather_now["weather"][1]["description"]:lower()
-        units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(markup.fontfg(theme.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
-    end
-})
---]]
+-- local weathericon = wibox.widget.imagebox(theme.widget_weather)
+-- theme.weather = lain.widget.weather({
+--     city_id = 1790630, -- placeholder (Xi'an)
+--     notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
+--     weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
+--     settings = function()
+--         descr = weather_now["weather"][1]["description"]:lower()
+--         units = math.floor(weather_now["main"]["temp"])
+--         widget:set_markup(markup.fontfg(theme.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
+--     end
+-- })
 
 -- / fs
 --[[ commented because it needs Gio/Glib >= 2.54
@@ -215,16 +214,16 @@ local bat = lain.widget.bat({
 })
 
 -- ALSA volume
-local volicon = wibox.widget.imagebox(theme.widget_vol)
-theme.volume = lain.widget.alsa({
-    settings = function()
-        if volume_now.status == "off" then
-            volume_now.level = volume_now.level .. "M"
-        end
+-- local volicon = wibox.widget.imagebox(theme.widget_vol)
+-- theme.volume = lain.widget.alsa({
+--     settings = function()
+--         if volume_now.status == "off" then
+--             volume_now.level = volume_now.level .. "M"
+--         end
 
-        widget:set_markup(markup.fontfg(theme.font, "#7493d2", volume_now.level .. "% "))
-    end
-})
+--         widget:set_markup(markup.fontfg(theme.font, "#7493d2", volume_now.level .. "% "))
+--     end
+-- })
 
 -- Net
 local netdownicon = wibox.widget.imagebox(theme.widget_netdown)
@@ -311,24 +310,27 @@ function theme.at_screen_connect(s)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+    beautiful.tasklist_bg_normal = "#ffffff00"
+    beautiful.tasklist_bg_focus = "#ffffff00"
+    beautiful.tasklist_font = "JetBrains Mono 12"
 
     -- Create the wibox
-    -- s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(20), bg = "#ffffff00", fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
+    -- s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = "#ffffff00", fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            --s.mylayoutbox,
+            -- s.mylayoutbox,
             s.mytaglist,
             s.mypromptbox,
             mpdicon,
             theme.mpd.widget,
         },
-        --s.mytasklist, -- Middle widget
-        nil,
+        s.mytasklist, -- Middle widget
+        -- nil,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
@@ -338,41 +340,42 @@ function theme.at_screen_connect(s)
             netdowninfo,
             netupicon,
             netupinfo.widget,
-            volicon,
-            theme.volume.widget,
+            -- volicon,
+            -- theme.volume.widget,
             memicon,
             memory.widget,
             cpuicon,
             cpu.widget,
-            --fsicon,
-            --theme.fs.widget,
-            --weathericon,
-            --theme.weather.widget,
-            tempicon,
-            temp.widget,
-            baticon,
-            bat.widget,
+            -- fsicon,
+            -- theme.fs.widget,
+            -- weathericon,
+            -- theme.weather.widget,
+            -- tempicon,
+            -- temp.widget,
+            -- baticon,
+            -- bat.widget,
             clockicon,
             mytextclock,
+            s.mylayoutbox,
         },
     }
 
     -- Create the bottom wibox
     -- s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
-    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = "#ffffff00", fg = theme.fg_normal })
+    -- s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(21), bg = "#ffffff00", fg = theme.fg_normal })
 
     -- Add widgets to the bottom wibox
-    s.mybottomwibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-        },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            s.mylayoutbox,
-        },
-    }
+    -- s.mybottomwibox:setup {
+    --     layout = wibox.layout.align.horizontal,
+    --     { -- Left widgets
+    --         layout = wibox.layout.fixed.horizontal,
+    --     },
+    --     s.mytasklist, -- Middle widget
+    --     { -- Right widgets
+    --         layout = wibox.layout.fixed.horizontal,
+    --         s.mylayoutbox,
+    --     },
+    -- }
 end
 
 return theme

@@ -98,7 +98,8 @@ local themes = {
     "rainbow",         -- 8
     "steamburn",       -- 9
     "vertex",          -- 10
-    "Morning"          -- 11
+    "zenburn",         -- 11
+    "Morning"          -- 12
 }
 
 local chosen_theme = themes[5]
@@ -261,6 +262,8 @@ awful.screen.connect_for_each_screen(function(s)
         beautiful.at_screen_connect(s)
         s.systray = wibox.widget.systray()
         s.systray.visible = false
+        beautiful.fg_systray = "#ffffff00"
+        -- beautiful.bg_systray = "#ffffff00"
 end)
 
 -- }}}
@@ -309,13 +312,13 @@ globalkeys = mytable.join(
               {description = "view  previous nonempty", group = "tag"}),
 
     -- Default client focus
-    awful.key({ altkey,           }, "j",
+    awful.key({ altkey,           }, "k",
         function ()
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ altkey,           }, "k",
+    awful.key({ altkey,           }, "j",
         function ()
             awful.client.focus.byidx(-1)
         end,
@@ -556,7 +559,8 @@ globalkeys = mytable.join(
     awful.key({ altkey }, "space", function ()
             -- os.execute(string.format("rofi -show %s -theme %s", 'run', 'dmenu'))
             -- os.execute(string.format("rofi -show %s", 'drun'))
-            os.execute("rofi -show drun")
+            -- os.execute("rofi -show drun")
+            os.execute("rofi -show combi -combi-modi \"window,drun\" -modi combi")
         end,
         {description = "show rofi", group = "launcher"}),
 
