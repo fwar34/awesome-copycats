@@ -23,7 +23,6 @@ local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup")
                       require("awful.hotkeys_popup.keys")
 local mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
-local dpi           = require("beautiful.xresources").apply_dpi
 
 -- }}}
 
@@ -69,7 +68,10 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
+-- run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
+-- run_once({ "killall", "-9 polybar" }) -- comma-separated entries
+run_once({ "picom" }) -- comma-separated entries
+-- run_once({ "polybar", "--config=$HOME/.config/polybar/config example" }) -- comma-separated entries
 
 -- This function implements the XDG autostart specification
 --[[
@@ -102,7 +104,8 @@ local chosen_theme = themes[5]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 -- local terminal     = "urxvtc"
-local terminal     = "kitty"
+-- local terminal     = "kitty"
+local terminal     = "alacritty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
@@ -255,7 +258,7 @@ end)
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s)
     s.systray = wibox.widget.systray()
-    s.systray.visible = true
+    s.systray.visible = false
 end)
 
 -- }}}

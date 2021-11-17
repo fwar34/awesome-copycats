@@ -98,6 +98,19 @@ theme.titlebar_maximized_button_focus_inactive  = theme.confdir .. "/icons/title
 theme.titlebar_maximized_button_normal_active   = theme.confdir .. "/icons/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active    = theme.confdir .. "/icons/titlebar/maximized_focus_active.png"
 
+-- Hotkeys popup
+theme.hotkeys_bg = '#37395E'
+theme.hotkeys_fg = '#ECBDF6'
+theme.hotkeys_opacity = '0.9'
+theme.hotkeys_border_width = 3
+theme.hotkeys_border_color = '#48FFDC'
+theme.hotkeys_modifiers_fg = '#1DFF79'
+theme.hotkeys_label_fg = '#1B1D27'
+-- theme.hotkeys_font = 'JetBrains Mono 10'
+theme.hotkeys_font = "Noto Sans Regular 10"
+theme.hotkeys_description_font = 'Fira Code 10'
+theme.hotkeys_group_margin = 20
+
 local markup = lain.util.markup
 
 -- Textclock
