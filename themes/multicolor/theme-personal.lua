@@ -137,20 +137,20 @@ theme.cal = lain.widget.cal({
 })
 
 -- Weather
--- local weathericon = wibox.widget.imagebox(theme.widget_weather)
--- theme.weather = lain.widget.weather({
---     city_id = 1790630, -- placeholder (Xi'an)
---     notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
---     weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
---     settings = function()
---         descr = weather_now["weather"][1]["description"]:lower()
---         units = math.floor(weather_now["main"]["temp"])
---         widget:set_markup(markup.fontfg(theme.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
---     end
--- })
+local weathericon = wibox.widget.imagebox(theme.widget_weather)
+theme.weather = lain.widget.weather({
+    city_id = 1790630, -- placeholder (Xi'an)
+    notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
+    weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
+    settings = function()
+        descr = weather_now["weather"][1]["description"]:lower()
+        units = math.floor(weather_now["main"]["temp"])
+        widget:set_markup(markup.fontfg(theme.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
+    end
+})
 
 -- / fs
---[[ commented because it needs Gio/Glib >= 2.54
+-- commented because it needs Gio/Glib >= 2.54
 local fsicon = wibox.widget.imagebox(theme.widget_fs)
 theme.fs = lain.widget.fs({
     notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
@@ -158,7 +158,6 @@ theme.fs = lain.widget.fs({
         widget:set_markup(markup.fontfg(theme.font, "#80d9d8", string.format("%.1f", fs_now["/"].used) .. "% "))
     end
 })
---]]
 
 -- Mail IMAP check
 --[[ to be set before use
