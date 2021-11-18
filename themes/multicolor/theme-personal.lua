@@ -311,7 +311,9 @@ function theme.at_screen_connect(s)
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
     beautiful.tasklist_bg_normal = "#ffffff00"
-    beautiful.tasklist_bg_focus = "#ffffff00"
+    -- beautiful.tasklist_bg_focus = "#ffffff00"
+    beautiful.tasklist_bg_focus = "#708090"
+    -- beautiful.tasklist_bg_focus = "#ffe4e1"
     beautiful.tasklist_font = "JetBrains Mono 12"
 
     -- Create the wibox
