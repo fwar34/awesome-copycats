@@ -24,6 +24,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
                       require("awful.hotkeys_popup.keys")
 local mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
 
+local utils = require("utils")
+
 -- }}}
 
 -- {{{ Error handling
@@ -111,7 +113,7 @@ local terminal     = "alacritty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "librewolf"
+local browser      = "dex /usr/share/applications/microsoft-edge-beta.desktop"
 
 awful.util.terminal = terminal
 -- awful.util.tagnames = { "1", "2", "3", "4", "5" }
@@ -615,10 +617,8 @@ clientkeys = mytable.join(
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     -- move client
-    -- awful.key({modkey, "Control"}, "Left", function (c) c:relative_move(c.x, -20, 0, 0) end,
     awful.key({modkey, "Control"}, "Left", function (c) c:relative_move(-20, 0, 0, 0) end,
         {description = "move client to left", group = "client"}),
-    -- awful.key({modkey, "Control"}, "Right", function (c) c:relative_move(c.x, 20, 0, 0) end,
     awful.key({modkey, "Control"}, "Right", function (c) c:relative_move(20, 0, 0, 0) end,
         {description = "move client to right", group = "client"}),
     awful.key({modkey, "Control"}, "Up", function (c) c:relative_move(0, -20, 0, 0) end,
@@ -638,6 +638,8 @@ clientkeys = mytable.join(
         {description = "decrease client size", group = "client"}),
     awful.key({ modkey }, "Prior", function (c) c:relative_move(-20, -20,  40,  40) end,
         {description = "increase client size", group = "client"}),
+    awful.key({modkey, altkey}, "c", function (c) utils:move_client_to_center(c) end,
+        {description = "move client to center and resize", group = "client"}),
 
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
