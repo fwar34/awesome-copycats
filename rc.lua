@@ -366,7 +366,8 @@ globalkeys = mytable.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
+    -- awful.key({ modkey,           }, "Tab",
+    awful.key({ altkey,           }, "Tab",
         function ()
             if cycle_prev then
                 awful.client.focus.history.previous()
@@ -613,6 +614,31 @@ clientkeys = mytable.join(
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
+    -- move client
+    -- awful.key({modkey, "Control"}, "Left", function (c) c:relative_move(c.x, -20, 0, 0) end,
+    awful.key({modkey, "Control"}, "Left", function (c) c:relative_move(-20, 0, 0, 0) end,
+        {description = "move client to left", group = "client"}),
+    -- awful.key({modkey, "Control"}, "Right", function (c) c:relative_move(c.x, 20, 0, 0) end,
+    awful.key({modkey, "Control"}, "Right", function (c) c:relative_move(20, 0, 0, 0) end,
+        {description = "move client to right", group = "client"}),
+    awful.key({modkey, "Control"}, "Up", function (c) c:relative_move(0, -20, 0, 0) end,
+        {description = "move client to up", group = "client"}),
+    awful.key({modkey, "Control"}, "Down", function (c) c:relative_move(0, 20, 0, 0) end,
+        {description = "move client to down", group = "client"}),
+    -- resize client
+    awful.key({modkey, altkey}, "Left", function (c) c:relative_move(0, 0, -20, 0) end,
+        {description = "decrease client width", group = "client"}),
+    awful.key({modkey, altkey}, "Right", function (c) c:relative_move(0, 0, 20, 0) end,
+        {description = "increase client width", group = "client"}),
+    awful.key({modkey, altkey}, "Up", function (c) c:relative_move(0, 0, 0, -20) end,
+        {description = "decrease client height", group = "client"}),
+    awful.key({modkey, altkey}, "Down", function (c) c:relative_move(0, 0, 0, 20) end,
+        {description = "increase client height", group = "client"}),
+    awful.key({ modkey }, "Next",  function (c) c:relative_move( 20,  20, -40, -40) end,
+        {description = "decrease client size", group = "client"}),
+    awful.key({ modkey }, "Prior", function (c) c:relative_move(-20, -20,  40,  40) end,
+        {description = "increase client size", group = "client"}),
+
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
