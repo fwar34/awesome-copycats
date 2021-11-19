@@ -37,15 +37,7 @@ end
 
 function utils:move_client_to_center(client)
     local screen_geometry = mouse.screen.get_bounding_geometry()
-    -- self.log("x", screen_geometry.x)
-    -- self.log("y", screen_geometry.y)
-    -- self.log("width", screen_geometry.width)
-    -- self.log("height", screen_geometry.height)
     local client_geometry = client.geometry(client)
-    -- self.log("client.x", client_geometry.x)
-    -- self.log("client.y", client_geometry.y)
-    -- self.log("client.width", client.width)
-    -- self.log("client.height", client.height)
     local client_sts = client_status(client)
     if client_sts ~= "floating" then
         client.floating = true
@@ -55,6 +47,8 @@ function utils:move_client_to_center(client)
     local x = (screen_geometry.width - width) / 2
     local y = 40
     client:relative_move(x - client_geometry.x, y - client_geometry.y, width - client_geometry.width, height - client_geometry.height)
+    client.maximized_vertical = true
+    client:raise()
 end
 
 function utils.file_exists(file)
