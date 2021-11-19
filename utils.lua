@@ -57,6 +57,12 @@ function utils:move_client_to_center(client)
     client:relative_move(x - client_geometry.x, y - client_geometry.y, width - client_geometry.width, height - client_geometry.height)
 end
 
+function utils.file_exists(file)
+    local file = io.open(file, "r")
+    if file then file:close() end
+    -- if file then io.close(file) end
+    return file ~= nil
+end
 
 return utils
 

@@ -74,6 +74,7 @@ end
 -- run_once({ "killall", "-9 polybar" }) -- comma-separated entries
 run_once({ "picom" }) -- comma-separated entries
 -- run_once({ "polybar", "--config=$HOME/.config/polybar/config example" }) -- comma-separated entries
+run_once({ "dex /usr/share/applications/org.fcitx.Fcitx5.desktop" }) -- comma-separated entries
 
 -- This function implements the XDG autostart specification
 --[[
@@ -113,7 +114,11 @@ local terminal     = "alacritty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "dex /usr/share/applications/microsoft-edge-beta.desktop"
+
+local edge_path = "/usr/share/applications/"
+local edge = utils.file_exists(edge_path .. "microsoft-edge.desktop") and
+    edge_path .. "microsoft-edge.desktop" or edge_path .. "microsoft-edge-beta.desktop"
+local browser      = "dex " .. edge
 
 awful.util.terminal = terminal
 -- awful.util.tagnames = { "1", "2", "3", "4", "5" }
