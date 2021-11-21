@@ -74,7 +74,9 @@ end
 -- run_once({ "killall", "-9 polybar" }) -- comma-separated entries
 run_once({ "picom" }) -- comma-separated entries
 -- run_once({ "polybar", "--config=$HOME/.config/polybar/config example" }) -- comma-separated entries
-run_once({ "dex /usr/share/applications/org.fcitx.Fcitx5.desktop" }) -- comma-separated entries
+-- run_once({ "dex /usr/share/applications/org.fcitx.Fcitx5.desktop" }) -- comma-separated entries
+run_once({ "dex /usr/share/applications/fcitx.desktop" }) -- comma-separated entries
+-- run_once({ "exec --no-startup-id fcitx" }) -- comma-separated entries
 
 -- This function implements the XDG autostart specification
 --[[
