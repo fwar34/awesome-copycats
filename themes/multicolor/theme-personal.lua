@@ -112,8 +112,11 @@ theme.hotkeys_border_color = '#48FFDC'
 theme.hotkeys_modifiers_fg = '#1DFF79'
 theme.hotkeys_label_fg = '#1B1D27'
 theme.hotkeys_font = 'JetBrains Mono 10'
+-- theme.hotkeys_font = 'Iosevka 10'
 -- theme.hotkeys_font = "Noto Sans Regular 10"
-theme.hotkeys_description_font = 'Fira Code 10'
+-- theme.hotkeys_description_font = 'Fira Code 10'
+-- theme.hotkeys_description_font = 'Iosevka 10'
+theme.hotkeys_description_font = 'JetBrains Mono 10'
 theme.hotkeys_group_margin = 20
 
 local markup = lain.util.markup
@@ -131,7 +134,8 @@ theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
         -- font = "Terminus 10",
-        font = "Noto Sans Mono Medium 10",
+        -- font = "Noto Sans Mono Medium 10",
+        font = "JetBrains Mono 10",
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -154,7 +158,8 @@ theme.weather = lain.widget.weather({
 -- commented because it needs Gio/Glib >= 2.54
 local fsicon = wibox.widget.imagebox(theme.widget_fs)
 theme.fs = lain.widget.fs({
-    notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
+    -- notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
+    notification_preset = { font = "JetBrains Mono 10", fg = theme.fg_normal },
     settings  = function()
         widget:set_markup(markup.fontfg(theme.font, "#80d9d8", string.format("%.1f", fs_now["/"].used) .. "% "))
     end
