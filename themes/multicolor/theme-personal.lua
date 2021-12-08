@@ -21,8 +21,8 @@ theme.wallpaper                                 = theme.confdir .. "/wall.png"
 -- theme.font                                      = "Terminus 8"
 -- theme.font                                      = "Noto Sans Regular 11"
 -- theme.taglist_font                              = "Noto Sans Regular 13"
-theme.font                                      = "JetBrains Mono 12"
-theme.taglist_font                              = "JetBrains Mono 13"
+theme.font                                      = "JetBrainsMono Nerd Font 12"
+theme.taglist_font                              = "JetBrainsMono Nerd Font 13"
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
 theme.bg_normal                                 = "#000000"
@@ -111,12 +111,12 @@ theme.hotkeys_border_width = 3
 theme.hotkeys_border_color = '#48FFDC'
 theme.hotkeys_modifiers_fg = '#1DFF79'
 theme.hotkeys_label_fg = '#1B1D27'
-theme.hotkeys_font = 'JetBrains Mono 10'
+theme.hotkeys_font = 'JetBrainsMono Nerd Font 10'
 -- theme.hotkeys_font = 'Iosevka 10'
 -- theme.hotkeys_font = "Noto Sans Regular 10"
 -- theme.hotkeys_description_font = 'Fira Code 10'
 -- theme.hotkeys_description_font = 'Iosevka 10'
-theme.hotkeys_description_font = 'JetBrains Mono 10'
+theme.hotkeys_description_font = 'JetBrainsMono Nerd Font 10'
 theme.hotkeys_group_margin = 20
 
 local markup = lain.util.markup
@@ -135,7 +135,7 @@ theme.cal = lain.widget.cal({
     notification_preset = {
         -- font = "Terminus 10",
         -- font = "Noto Sans Mono Medium 10",
-        font = "JetBrains Mono 10",
+        font = "JetBrainsMono Nerd Font 10",
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -159,7 +159,7 @@ theme.weather = lain.widget.weather({
 local fsicon = wibox.widget.imagebox(theme.widget_fs)
 theme.fs = lain.widget.fs({
     -- notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
-    notification_preset = { font = "JetBrains Mono 10", fg = theme.fg_normal },
+    notification_preset = { font = "JetBrainsMono Nerd Font 10", fg = theme.fg_normal },
     settings  = function()
         widget:set_markup(markup.fontfg(theme.font, "#80d9d8", string.format("%.1f", fs_now["/"].used) .. "% "))
     end
@@ -319,7 +319,7 @@ function theme.at_screen_connect(s)
     beautiful.tasklist_bg_focus = "#ffffff00"
     -- beautiful.tasklist_bg_focus = "#708090"
     -- beautiful.tasklist_bg_focus = "#ffe4e1"
-    beautiful.tasklist_font = "JetBrains Mono 12"
+    beautiful.tasklist_font = "JetBrainsMono Nerd Font 12"
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
