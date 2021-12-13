@@ -475,6 +475,7 @@ globalkeys = mytable.join(
     --           {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
+    -- feng: arch install alsa-utils
     awful.key({ altkey }, "Up",
         function ()
             os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
