@@ -205,11 +205,17 @@ local temp = lain.widget.temp({
         widget:set_markup(markup.fontfg(theme.font, "#f1af5f", coretemp_now .. "°C "))
     end
 })
-local function coretemp()
+local function coretempicon()
     if hostname ~= "ubuntu-awesome" then
-        return tempicon, temp
+        return tempicon
     end
 end
+local function coretemp()
+    if hostname ~= "ubuntu-awesome" then
+        return temp
+    end
+end
+
 
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_batt)
@@ -370,6 +376,7 @@ function theme.at_screen_connect(s)
             -- theme.fs.widget,
             -- weathericon,
             -- theme.weather.widget,
+            coretempicon(),
             coretemp(),
             -- tempicon,
             -- temp.widget,
