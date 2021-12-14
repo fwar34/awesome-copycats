@@ -119,6 +119,8 @@ theme.hotkeys_font = 'JetBrainsMono Nerd Font 10'
 theme.hotkeys_description_font = 'JetBrainsMono Nerd Font 10'
 theme.hotkeys_group_margin = 20
 
+local hostname = os.getenv("MYHOSTNAME")
+
 local markup = lain.util.markup
 
 -- Textclock
@@ -203,6 +205,11 @@ local temp = lain.widget.temp({
         widget:set_markup(markup.fontfg(theme.font, "#f1af5f", coretemp_now .. "°C "))
     end
 })
+local function coretemp()
+    if os.getenv("MYHOSTNAME") ~= "ubuntu-awesome" then
+        return {tempicon, temp}
+    end
+end
 
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_batt)
@@ -229,6 +236,11 @@ theme.volume = lain.widget.alsa({
         widget:set_markup(markup.fontfg(theme.font, "#7493d2", volume_now.level .. "% "))
     end
 })
+local function alsavolume()
+    if os.getenv("MYHOSTNAME") ~= "ubuntu-awesome" then
+        return {volicon}
+    end
+end
 
 -- Net
 local netdownicon = wibox.widget.imagebox(theme.widget_netdown)
@@ -347,7 +359,8 @@ function theme.at_screen_connect(s)
             netdowninfo,
             netupicon,
             netupinfo.widget,
-            volicon,
+            -- volicon,
+            alsavolume(),
             theme.volume.widget,
             memicon,
             memory.widget,
@@ -357,8 +370,9 @@ function theme.at_screen_connect(s)
             -- theme.fs.widget,
             -- weathericon,
             -- theme.weather.widget,
-            tempicon,
-            temp.widget,
+            coretemp(),
+            -- tempicon,
+            -- temp.widget,
             -- baticon,
             -- bat.widget,
             clockicon,
