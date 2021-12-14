@@ -125,7 +125,7 @@ local browser      = "dex " .. edge
 awful.util.terminal = terminal
 -- awful.util.tagnames = { "1", "2", "3", "4", "5" }
 -- awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒" }
-awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎" }
+awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎   " }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
