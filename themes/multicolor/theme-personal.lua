@@ -206,8 +206,8 @@ local temp = lain.widget.temp({
     end
 })
 local function coretemp()
-    if os.getenv("MYHOSTNAME") ~= "ubuntu-awesome" then
-        return {tempicon, temp}
+    if hostname ~= "ubuntu-awesome" then
+        return tempicon, temp
     end
 end
 
@@ -237,8 +237,8 @@ theme.volume = lain.widget.alsa({
     end
 })
 local function alsavolume()
-    if os.getenv("MYHOSTNAME") ~= "ubuntu-awesome" then
-        return {volicon}
+    if hostname ~= "ubuntu-awesome" then
+        return volicon
     end
 end
 
