@@ -28,7 +28,7 @@ if hostname == "ubuntu-awesome" then
     theme.taglist_font                              = "JetBrainsMono Nerd Font 12"
 else
     theme.font                                      = "JetBrainsMono Nerd Font 12"
-    theme.taglist_font                              = "JetBrainsMono Nerd Font 15"
+    theme.taglist_font                              = "JetBrainsMono Nerd Font 16"
 end
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
