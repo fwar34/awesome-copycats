@@ -72,9 +72,11 @@ theme.widget_clock                              = theme.confdir .. "/icons/clock
 theme.widget_vol                                = theme.confdir .. "/icons/spkr.png"
 theme.taglist_squares_sel                       = theme.confdir .. "/icons/square_a.png"
 theme.taglist_squares_unsel                     = theme.confdir .. "/icons/square_b.png"
-theme.tasklist_plain_task_name                  = true
-theme.tasklist_disable_icon                     = true
--- theme.useless_gap                               = 0
+-- https://awesomewm.org/apidoc/widgets/awful.widget.tasklist.html
+theme.tasklist_plain_task_name                  = false
+theme.tasklist_disable_icon                     = false
+-- theme.tasklist_disable_task_name                = true
+-- theme.useless_gap                            = 0
 theme.useless_gap                               = 5
 theme.layout_tile                               = theme.confdir .. "/icons/tile.png"
 theme.layout_tilegaps                           = theme.confdir .. "/icons/tilegaps.png"
@@ -357,6 +359,11 @@ function theme.at_screen_connect(s)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+
+    -- Create a tasklist widget
+    -- holo
+    -- s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons, { bg_focus = theme.bg_focus, shape = gears.shape.rectangle, shape_border_width = 5, shape_border_color = theme.tasklist_bg_normal, align = "center" })
+
     beautiful.tasklist_bg_normal = "#ffffff00"
     beautiful.tasklist_bg_focus = "#ffffff00"
     -- beautiful.tasklist_bg_focus = "#708090"
