@@ -5,6 +5,8 @@
 
 --]]
 
+local hostname = os.getenv("MYHOSTNAME")
+
 local gears = require("gears")
 local lain  = require("lain")
 local awful = require("awful")
@@ -21,8 +23,13 @@ theme.wallpaper                                 = theme.confdir .. "/wall.png"
 -- theme.font                                      = "Terminus 8"
 -- theme.font                                      = "Noto Sans Regular 11"
 -- theme.taglist_font                              = "Noto Sans Regular 13"
-theme.font                                      = "JetBrainsMono Nerd Font 12"
-theme.taglist_font                              = "JetBrainsMono Nerd Font 13"
+if hostname == "ubuntu-awesome" then
+    theme.font                                      = "JetBrainsMono Nerd Font 11"
+    theme.taglist_font                              = "JetBrainsMono Nerd Font 12"
+else
+    theme.font                                      = "JetBrainsMono Nerd Font 12"
+    theme.taglist_font                              = "JetBrainsMono Nerd Font 15"
+end
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
 theme.bg_normal                                 = "#000000"
@@ -111,15 +118,18 @@ theme.hotkeys_border_width = 3
 theme.hotkeys_border_color = '#48FFDC'
 theme.hotkeys_modifiers_fg = '#1DFF79'
 theme.hotkeys_label_fg = '#1B1D27'
-theme.hotkeys_font = 'JetBrainsMono Nerd Font 11'
 -- theme.hotkeys_font = 'Iosevka 10'
 -- theme.hotkeys_font = "Noto Sans Regular 10"
 -- theme.hotkeys_description_font = 'Fira Code 10'
 -- theme.hotkeys_description_font = 'Iosevka 10'
-theme.hotkeys_description_font = 'JetBrainsMono Nerd Font 11'
+if hostname == 'ubuntu-awesome' then
+    theme.hotkeys_font = 'JetBrainsMono Nerd Font 10'
+    theme.hotkeys_description_font = 'JetBrainsMono Nerd Font 10'
+else
+    theme.hotkeys_font = 'JetBrainsMono Nerd Font 11'
+    theme.hotkeys_description_font = 'JetBrainsMono Nerd Font 11'
+end
 theme.hotkeys_group_margin = 20
-
-local hostname = os.getenv("MYHOSTNAME")
 
 local markup = lain.util.markup
 
@@ -131,13 +141,20 @@ local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local mytextclock = wibox.widget.textclock(markup("#de5e1e", "%H:%M "))
 mytextclock.font = theme.font
 
+local function calender_font()
+    if hostname == 'ubuntu-awesome' then
+        return "JetBrainsMono Nerd Font 11"
+    else
+        return "JetBrainsMono Nerd Font 12"
+    end
+end
 -- Calendar
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
         -- font = "Terminus 10",
         -- font = "Noto Sans Mono Medium 10",
-        font = "JetBrainsMono Nerd Font 12",
+        font = calender_font(),
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -248,11 +265,18 @@ local function alsavolume()
     end
 end
 
+local function net_device()
+    if hostname == "ubuntu-awesome" then
+        return "eth0"
+    end
+end
+
 -- Net
 local netdownicon = wibox.widget.imagebox(theme.widget_netdown)
 local netdowninfo = wibox.widget.textbox()
 local netupicon = wibox.widget.imagebox(theme.widget_netup)
 local netupinfo = lain.widget.net({
+    iface = net_device(),
     settings = function()
         --[[ uncomment if using the weather widget
         if iface ~= "network off" and
@@ -330,7 +354,6 @@ function theme.at_screen_connect(s)
                            awful.button({}, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
-    beautiful.taglist_font = "JetBrainsMono Nerd Font 15"
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
@@ -338,7 +361,11 @@ function theme.at_screen_connect(s)
     beautiful.tasklist_bg_focus = "#ffffff00"
     -- beautiful.tasklist_bg_focus = "#708090"
     -- beautiful.tasklist_bg_focus = "#ffe4e1"
-    beautiful.tasklist_font = "JetBrainsMono Nerd Font 12"
+    if hostname == 'ubuntu-awesome' then
+        beautiful.tasklist_font = "JetBrainsMono Nerd Font 11"
+    else
+        beautiful.tasklist_font = "JetBrainsMono Nerd Font 12"
+    end
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
