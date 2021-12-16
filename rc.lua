@@ -273,6 +273,8 @@ awful.screen.connect_for_each_screen(function(s)
         s.systray.visible = false
         beautiful.fg_systray = "#ffffff00"
         -- beautiful.bg_systray = "#ffffff00"
+        -- beautiful.bg_systray 必须与 theme 中 s.mywibox 的 bg 相同，否则有色差
+        beautiful.bg_systray = "#262626"
 end)
 
 -- }}}

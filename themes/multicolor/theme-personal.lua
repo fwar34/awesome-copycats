@@ -70,6 +70,8 @@ theme.widget_mail                               = theme.confdir .. "/icons/mail.
 theme.widget_batt                               = theme.confdir .. "/icons/bat.png"
 theme.widget_clock                              = theme.confdir .. "/icons/clock.png"
 theme.widget_vol                                = theme.confdir .. "/icons/spkr.png"
+-- taglist_bg_focus 必须与底下 s.mywibox 的 bg 相同，否则有色差
+theme.taglist_bg_focus = "#262626"
 theme.taglist_squares_sel                       = theme.confdir .. "/icons/square_a.png"
 theme.taglist_squares_unsel                     = theme.confdir .. "/icons/square_b.png"
 -- https://awesomewm.org/apidoc/widgets/awful.widget.tasklist.html
@@ -375,8 +377,8 @@ function theme.at_screen_connect(s)
     end
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
-    -- s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = "#ffffff00", fg = theme.fg_normal })
+    -- s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = "#262626", fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
