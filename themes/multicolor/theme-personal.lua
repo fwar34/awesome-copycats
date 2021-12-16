@@ -167,7 +167,8 @@ theme.cal = lain.widget.cal({
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
-    city_id = 1790630, -- placeholder (Xi'an)
+    APPID='6ceb7234f8f23be627eaea880ce52f8',
+    city_id = 1790630,
     notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
     weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
     settings = function()
@@ -411,8 +412,8 @@ function theme.at_screen_connect(s)
             cpu.widget,
             -- fsicon,
             -- theme.fs.widget,
-            -- weathericon,
-            -- theme.weather.widget,
+            weathericon,
+            theme.weather.widget,
             coretempicon(),
             coretemp(),
             -- tempicon,
