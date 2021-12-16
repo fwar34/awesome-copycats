@@ -381,6 +381,9 @@ function theme.at_screen_connect(s)
     -- s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
     s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = "#262626", fg = theme.fg_normal })
 
+    local myspace = wibox.widget.textbox()
+    -- myspace:set_markup(markup.fontfg(theme.font, "#87af5f", "  "))
+    myspace:set_markup_silently("  ")
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -396,6 +399,7 @@ function theme.at_screen_connect(s)
         -- nil,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            myspace,
             wibox.widget.systray(),
             --mailicon,
             --theme.mail.widget,
