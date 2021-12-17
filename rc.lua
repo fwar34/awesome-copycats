@@ -18,7 +18,7 @@ local wibox         = require("wibox") -- Awesome own generic widget framework
 local beautiful     = require("beautiful") -- Awesome theme module
 local naughty       = require("naughty") -- Notifications
 local lain          = require("lain")
---local menubar       = require("menubar")
+local menubar       = require("menubar")
 local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup")
                       require("awful.hotkeys_popup.keys")
@@ -235,7 +235,7 @@ end)
 --]]
 
 -- Set the Menubar terminal for applications that require it
---menubar.utils.terminal = terminal
+menubar.utils.terminal = terminal
 
 -- }}}
 
