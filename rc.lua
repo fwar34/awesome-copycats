@@ -266,6 +266,19 @@ screen.connect_signal("arrange", function (s)
     end
 end)
 
+-- fix virtualbox fullscreen issue
+-- https://github.com/awesomeWM/awesome/issues/3156#issuecomment-683533740
+-- https://github.com/awesomeWM/awesome/issues/1607#issuecomment-298194491
+client.connect_signal("property::fullscreen", function(c)
+  if c.fullscreen then
+    gears.timer.delayed_call(function()
+      if c.valid then
+        c:geometry(c.screen.geometry)
+      end
+    end)
+  end
+end)
+
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s)
         beautiful.at_screen_connect(s)
