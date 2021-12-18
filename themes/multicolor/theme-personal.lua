@@ -220,6 +220,20 @@ local cpu = lain.widget.cpu({
     end
 })
 
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local cpu2 = cpu_widget({
+        width = 70,
+        step_width = 2,
+        step_spacing = 0,
+        color = '#434c5e'
+})
+
+local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local logout = logout_menu_widget{
+    font = theme.font,
+    onlock = function() awful.spawn.with_shell('i3lock-fancy') end
+}
+
 -- Coretemp
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
@@ -414,6 +428,7 @@ function theme.at_screen_connect(s)
             memory.widget,
             cpuicon,
             cpu.widget,
+            cpu2,
             -- fsicon,
             -- theme.fs.widget,
             -- weathericon,
@@ -426,6 +441,7 @@ function theme.at_screen_connect(s)
             -- bat.widget,
             clockicon,
             mytextclock,
+            logout,
             s.mylayoutbox,
         },
     }
