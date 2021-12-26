@@ -398,6 +398,10 @@ function theme.at_screen_connect(s)
     local myspace = wibox.widget.textbox()
     -- myspace:set_markup(markup.fontfg(theme.font, "#87af5f", "  "))
     myspace:set_markup_silently("  ")
+
+
+    local myspace2 = wibox.widget.textbox()
+    myspace2:set_markup_silently(" ")
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -428,7 +432,7 @@ function theme.at_screen_connect(s)
             memory.widget,
             cpuicon,
             cpu.widget,
-            cpu2,
+            -- cpu2,
             -- fsicon,
             -- theme.fs.widget,
             -- weathericon,
@@ -442,6 +446,7 @@ function theme.at_screen_connect(s)
             clockicon,
             mytextclock,
             logout,
+            myspace2,
             s.mylayoutbox,
         },
     }
