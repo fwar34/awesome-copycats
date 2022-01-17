@@ -413,11 +413,11 @@ function theme.at_screen_connect(s)
             mpdicon,
             theme.mpd.widget,
         },
-        s.mytasklist, -- Middle widget
-        -- nil,
+        -- s.mytasklist, -- Middle widget
+        nil,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            myspace,
+            -- myspace,
             wibox.widget.systray(),
             --mailicon,
             --theme.mail.widget,
@@ -447,26 +447,27 @@ function theme.at_screen_connect(s)
             mytextclock,
             logout,
             myspace2,
-            s.mylayoutbox,
+            -- s.mylayoutbox,
         },
     }
 
     -- Create the bottom wibox
     -- s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
     -- s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(21), bg = "#ffffff00", fg = theme.fg_normal })
+    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(21), bg = "#262626", fg = theme.fg_normal })
 
     -- Add widgets to the bottom wibox
-    -- s.mybottomwibox:setup {
-    --     layout = wibox.layout.align.horizontal,
-    --     { -- Left widgets
-    --         layout = wibox.layout.fixed.horizontal,
-    --     },
-    --     s.mytasklist, -- Middle widget
-    --     { -- Right widgets
-    --         layout = wibox.layout.fixed.horizontal,
-    --         s.mylayoutbox,
-    --     },
-    -- }
+    s.mybottomwibox:setup {
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+        },
+        s.mytasklist, -- Middle widget
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            s.mylayoutbox,
+        },
+    }
 end
 
 return theme
