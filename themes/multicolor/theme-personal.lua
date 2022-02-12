@@ -228,11 +228,11 @@ local cpu2 = cpu_widget({
         color = '#434c5e'
 })
 
-local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local logout = logout_menu_widget{
-    font = theme.font,
-    onlock = function() awful.spawn.with_shell('i3lock-fancy') end
-}
+-- local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+-- local logout = logout_menu_widget{
+--     font = theme.font,
+--     onlock = function() awful.spawn.with_shell('i3lock-fancy') end
+-- }
 
 -- Coretemp
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
@@ -445,8 +445,8 @@ function theme.at_screen_connect(s)
             -- bat.widget,
             clockicon,
             mytextclock,
-            logout,
-            myspace2,
+            -- logout,
+            -- myspace2,
             -- s.mylayoutbox,
         },
     }
