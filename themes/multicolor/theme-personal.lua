@@ -23,7 +23,7 @@ theme.wallpaper                                 = theme.confdir .. "/wall.png"
 -- theme.font                                      = "Terminus 8"
 -- theme.font                                      = "Noto Sans Regular 11"
 -- theme.taglist_font                              = "Noto Sans Regular 13"
-if hostname == "ubuntu-awesome" then
+if hostname == "ubuntu-awesome" or hostname == 'feng-archlinux' then
     theme.font                                      = "JetBrainsMono Nerd Font 11"
     theme.taglist_font                              = "JetBrainsMono Nerd Font 12"
 else
@@ -126,7 +126,7 @@ theme.hotkeys_label_fg = '#1B1D27'
 -- theme.hotkeys_font = "Noto Sans Regular 10"
 -- theme.hotkeys_description_font = 'Fira Code 10'
 -- theme.hotkeys_description_font = 'Iosevka 10'
-if hostname == 'ubuntu-awesome' then
+if hostname == 'ubuntu-awesome' or hostname == 'feng-archlinux' then
     theme.hotkeys_font = 'JetBrainsMono Nerd Font 10'
     theme.hotkeys_description_font = 'JetBrainsMono Nerd Font 10'
 else
@@ -146,7 +146,7 @@ local mytextclock = wibox.widget.textclock(markup("#de5e1e", "%H:%M "))
 mytextclock.font = theme.font
 
 local function calender_font()
-    if hostname == 'ubuntu-awesome' then
+    if hostname == 'ubuntu-awesome' or hostname == 'feng-archlinux' then
         return "JetBrainsMono Nerd Font 11"
     else
         return "JetBrainsMono Nerd Font 12"
@@ -385,7 +385,7 @@ function theme.at_screen_connect(s)
     beautiful.tasklist_bg_focus = "#ffffff00"
     -- beautiful.tasklist_bg_focus = "#708090"
     -- beautiful.tasklist_bg_focus = "#ffe4e1"
-    if hostname == 'ubuntu-awesome' then
+    if hostname == 'ubuntu-awesome' or hostname == 'feng-archlinux' then
         beautiful.tasklist_font = "JetBrainsMono Nerd Font 11"
     else
         beautiful.tasklist_font = "JetBrainsMono Nerd Font 12"
