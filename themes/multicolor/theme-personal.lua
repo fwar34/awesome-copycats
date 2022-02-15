@@ -23,9 +23,12 @@ theme.wallpaper                                 = theme.confdir .. "/wall.png"
 -- theme.font                                      = "Terminus 8"
 -- theme.font                                      = "Noto Sans Regular 11"
 -- theme.taglist_font                              = "Noto Sans Regular 13"
-if hostname == "ubuntu-awesome" or hostname == 'feng-archlinux' then
+if hostname == "ubuntu-awesome" then
     theme.font                                      = "JetBrainsMono Nerd Font 11"
     theme.taglist_font                              = "JetBrainsMono Nerd Font 12"
+elseif hostname == 'feng-archlinux' then
+    theme.font                                      = "JetBrainsMono Nerd Font 10"
+    theme.taglist_font                              = "JetBrainsMono Nerd Font 11"
 else
     theme.font                                      = "JetBrainsMono Nerd Font 12"
     theme.taglist_font                              = "JetBrainsMono Nerd Font 16"
@@ -393,15 +396,21 @@ function theme.at_screen_connect(s)
     beautiful.tasklist_bg_focus = "#ffffff00"
     -- beautiful.tasklist_bg_focus = "#708090"
     -- beautiful.tasklist_bg_focus = "#ffe4e1"
-    if hostname == 'ubuntu-awesome' or hostname == 'feng-archlinux' then
+    if hostname == 'ubuntu-awesome' then
         beautiful.tasklist_font = "JetBrainsMono Nerd Font 11"
+    elseif hostname == 'feng-archlinux' then
+        beautiful.tasklist_font = "JetBrainsMono Nerd Font 10"
     else
         beautiful.tasklist_font = "JetBrainsMono Nerd Font 12"
     end
 
     -- Create the wibox
     -- s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = "#262626", fg = theme.fg_normal })
+    if hostname == 'feng-archlinux' then
+        s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(17), bg = "#262626", fg = theme.fg_normal })
+    else
+        s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = "#262626", fg = theme.fg_normal })
+    end
 
     local myspace = wibox.widget.textbox()
     -- myspace:set_markup(markup.fontfg(theme.font, "#87af5f", "  "))
@@ -462,7 +471,11 @@ function theme.at_screen_connect(s)
     -- Create the bottom wibox
     -- s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
     -- s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(21), bg = "#ffffff00", fg = theme.fg_normal })
-    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(21), bg = "#262626", fg = theme.fg_normal })
+    if hostname == 'feng-archlinux' then
+        s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(17), bg = "#262626", fg = theme.fg_normal })
+    else
+        s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(21), bg = "#262626", fg = theme.fg_normal })
+    end
 
     -- Add widgets to the bottom wibox
     s.mybottomwibox:setup {
