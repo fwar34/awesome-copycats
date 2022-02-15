@@ -27,8 +27,8 @@ if hostname == "ubuntu-awesome" then
     theme.font                                      = "JetBrainsMono Nerd Font 11"
     theme.taglist_font                              = "JetBrainsMono Nerd Font 12"
 elseif hostname == 'feng-archlinux' then
-    theme.font                                      = "JetBrainsMono Nerd Font 11"
-    theme.taglist_font                              = "JetBrainsMono Nerd Font 12"
+    theme.font                                      = "JetBrainsMono Nerd Font 12"
+    theme.taglist_font                              = "JetBrainsMono Nerd Font 13"
 else
     theme.font                                      = "JetBrainsMono Nerd Font 12"
     theme.taglist_font                              = "JetBrainsMono Nerd Font 16"
@@ -399,7 +399,7 @@ function theme.at_screen_connect(s)
     if hostname == 'ubuntu-awesome' then
         beautiful.tasklist_font = "JetBrainsMono Nerd Font 11"
     elseif hostname == 'feng-archlinux' then
-        beautiful.tasklist_font = "JetBrainsMono Nerd Font 11"
+        beautiful.tasklist_font = "JetBrainsMono Nerd Font 12"
     else
         beautiful.tasklist_font = "JetBrainsMono Nerd Font 12"
     end
