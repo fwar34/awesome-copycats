@@ -245,12 +245,12 @@ local temp = lain.widget.temp({
     end
 })
 local function coretempicon()
-    if hostname ~= "ubuntu-awesome" then
+    if hostname ~= "ubuntu-awesome" and hostname ~= "feng-archlinux" then
         return tempicon
     end
 end
 local function coretemp()
-    if hostname ~= "ubuntu-awesome" then
+    if hostname ~= "ubuntu-awesome" and hostname ~= "feng-archlinux" then
         return temp
     end
 end
