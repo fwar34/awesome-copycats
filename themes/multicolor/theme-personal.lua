@@ -223,13 +223,13 @@ local cpu = lain.widget.cpu({
     end
 })
 
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-local cpu2 = cpu_widget({
-        width = 70,
-        step_width = 2,
-        step_spacing = 0,
-        color = '#434c5e'
-})
+-- local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+-- local cpu2 = cpu_widget({
+--         width = 70,
+--         step_width = 2,
+--         step_spacing = 0,
+--         color = '#434c5e'
+-- })
 
 -- local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 -- local logout = logout_menu_widget{
