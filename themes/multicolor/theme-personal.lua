@@ -28,7 +28,7 @@ if hostname == "ubuntu-awesome" then
     theme.taglist_font                              = "JetBrainsMono Nerd Font 12"
 elseif hostname == 'feng-archlinux' then
     theme.font                                      = "JetBrainsMono Nerd Font 12"
-    theme.taglist_font                              = "JetBrainsMono Nerd Font 13"
+    theme.taglist_font                              = "JetBrainsMono Nerd Font 14"
 else
     theme.font                                      = "JetBrainsMono Nerd Font 12"
     theme.taglist_font                              = "JetBrainsMono Nerd Font 16"
