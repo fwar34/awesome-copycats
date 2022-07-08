@@ -21,11 +21,18 @@ local lain          = require("lain")
 local menubar       = require("menubar")
 local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup")
-                      require("awful.hotkeys_popup.keys")
+                      -- require("awful.hotkeys_popup.keys")
+
+-- {{{ remove vim hotkeys in help hotkeys_popup
+-- https://www.reddit.com/r/awesomewm/comments/rzyvkv/remove_vim_keybindings_in_the_hotkeys_popup/
+-- https://stackoverflow.com/questions/63758757/how-to-remove-tmux-hotkeys-from-showing-in-awful-hotkeys-popup-show-help
+-- require "awful.hotkeys_popup.keys.vim"
+-- }}}
 local mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local utils = require("utils")
 
+-- require "awful.hotkeys_popup.keys.tmux".add_rules_for_terminal({ rule = { name = "no window ever has a name like this" }})
 -- }}}
 
 -- {{{ Error handling
