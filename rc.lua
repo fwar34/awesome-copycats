@@ -322,7 +322,7 @@ globalkeys = mytable.join(
 
     -- X screen locker
     -- 直接输入密码 Enter 后进入系统
-    awful.key({ altkey, "Control" }, "l", function () os.execute('slock') end,
+    awful.key({ altkey, "Control" }, "l", function () os.execute('sleep 0.5; xset dpms force off; slock') end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Show help
