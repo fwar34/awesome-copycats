@@ -321,7 +321,8 @@ globalkeys = mytable.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
+    -- 直接输入密码 Enter 后进入系统
+    awful.key({ altkey, "Control" }, "l", function () os.execute('slock') end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Show help
@@ -593,17 +594,16 @@ globalkeys = mytable.join(
               {description = "run browser", group = "launcher"}),
 
     -- Default
-    --[[ Menubar
+    --Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
-    --]]
-    --[[ dmenu
-    awful.key({ modkey }, "x", function ()
-            os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
+              {description = "show the menubar", group = "launcher"}),
+    -- dmenu
+    awful.key({ modkey, "Control" }, "x", function ()
+            -- os.execute(string.format("dmenu_run -i -p 'Execute:' -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
+            os.execute(string.format("dmenu_run -i -p 'Execute:' -fn 'XXXXXXXX' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
             beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
         end,
-        {description = "show dmenu", group = "launcher"})
-    --]]
+        {description = "show dmenu", group = "launcher"}),
     -- alternatively use rofi, a dmenu-like application with more features
     -- check https://github.com/DaveDavenport/rofi for more details
     -- rofi
@@ -611,7 +611,7 @@ globalkeys = mytable.join(
             -- os.execute(string.format("rofi -show %s -theme %s", 'run', 'dmenu'))
             -- os.execute(string.format("rofi -show %s", 'drun'))
             -- os.execute("rofi -show drun")
-            os.execute("rofi -show combi -combi-modi \"window,drun\" -modi combi")
+            os.execute('rofi -show combi -combi-modi "window,drun" -modi combi')
         end,
         {description = "show rofi", group = "launcher"}),
 
@@ -626,9 +626,9 @@ globalkeys = mytable.join(
     end, {description = "Toggle systray visibility", group = "awesome"}),
 
  -- Show/Hide Systray
-    awful.key({ modkey }, "KP_Subtract", function ()
-    awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
-    end, {description = "Toggle systray visibility", group = "awesome"}),
+    -- awful.key({ modkey }, "KP_Subtract", function ()
+    -- awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+    -- end, {description = "Toggle systray visibility", group = "awesome"}),
 
     -- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
