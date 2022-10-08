@@ -269,6 +269,11 @@ local bat = lain.widget.bat({
         widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, perc .. " "))
     end
 })
+local function battery()
+    if hostname ~= "ubuntu-awesome" then
+        return volicon
+    end
+end
 
 -- ALSA volume
 local volicon = wibox.widget.imagebox(theme.widget_vol)
@@ -450,16 +455,16 @@ function theme.at_screen_connect(s)
             cpuicon,
             cpu.widget,
             -- cpu2,
-            -- fsicon,
-            -- theme.fs.widget,
+            fsicon,
+            theme.fs.widget,
             -- weathericon,
             -- theme.weather.widget,
             coretempicon(),
             coretemp(),
             -- tempicon,
             -- temp.widget,
-            -- baticon,
-            -- bat.widget,
+            baticon,
+            bat.widget,
             clockicon,
             mytextclock,
             -- logout,
