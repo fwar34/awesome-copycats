@@ -79,7 +79,8 @@ end
 
 -- run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
 -- run_once({ "killall", "-9 polybar" }) -- comma-separated entries
-run_once({ "picom --experimental-backends --config ~/.config/awesome/picom/picom.jonaburg.conf" }) -- comma-separated entries
+-- run_once({ "picom --experimental-backends --config ~/.config/awesome/picom/picom.jonaburg.conf" }) -- comma-separated entries
+run_once({ "picom --experimental-backends --config ~/.config/awesome/picom/picom.dccsillag.conf" }) -- comma-separated entries
 -- run_once({ "polybar", "--config=$HOME/.config/polybar/config example" }) -- comma-separated entries
 -- run_once({ "dex /usr/share/applications/org.fcitx.Fcitx5.desktop" }) -- comma-separated entries
 run_once({ "fcitx5 -d" }) -- comma-separated entries
